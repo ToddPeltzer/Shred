@@ -6,18 +6,26 @@ function Landing(props) {
     const [beach, setBeach] = useState()
     const url = 'http://localhost:8000/beach/?format=json'
 
-    fetch(url)
-    .then(res => res.json())
-    .then(res => setBeach(res))
-    .catch(console.error)
+    useEffect(() => {
+        fetch(url)
+        .then(res => res.json())
+        .then(res => setBeach(res))
+        .catch(console.error)
+    },[])
 
     if (!beach) {
         return null
     } else {
     return (
+        beach.map(beaches => {
+            return (
         <div>
-            {beach[0].name}
+            {beaches.name}
+            <br/>
+            <img height="400px" width="700px" style={{borderRadius:"50px"}} src={beaches.image_url} alt={beaches.name}></img>
         </div>
+            )
+        })
     );
     }
 }
