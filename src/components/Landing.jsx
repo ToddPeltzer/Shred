@@ -1,33 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Landing(props) {
+function Landing({ beach }) {
 
-
-    const [beach, setBeach] = useState()
-    const url = 'http://localhost:8000/beach/?format=json'
-
-    useEffect(() => {
-        fetch(url)
-        .then(res => res.json())
-        .then(res => setBeach(res))
-        .catch(console.error)
-    },[])
-
-    if (!beach) {
-        return null
-    } else {
     return (
-        beach.map(beaches => {
-            return (
         <div>
-            {beaches.name}
-            <br/>
-            <img height="400px" width="700px" style={{borderRadius:"50px"}} src={beaches.image_url} alt={beaches.name}></img>
+
+            <Link to='/beach'>
+                <button>Beach List</button>
+            </Link>
+            
         </div>
-            )
-        })
     );
-    }
 }
 
 export default Landing;
