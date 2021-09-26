@@ -1,41 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Post from './Post';
+import axios from 'axios';
 
+function BeachDetails({ post, match }) {
 
-function BeachDetails({ beach, post, match }) {
-
-    console.log('BEACH:', beach)
-    console.log('POST:', post)
-    
     const currentBeach = match.params.id
-
-    console.log('MATCH:', currentBeach)
-
     
-    if (!post) {
+    const urlBeach = `http://localhost:8000/beach/${currentBeach}?format=json`
+
+    const [beach, setBeach] = useState()
+
+    useEffect(() => {
+        axios.get(urlBeach).then(res => {
+          setBeach(res.data)
+        })
+      }, [])
+
+    if (!beach) {
         return null
     } else {
-        console.log('POST.BEACH:', post[0].beach)
-        let filteredPost = post.filter(item => item.beach == currentBeach)
-        console.log('FILTERED:', filteredPost)
-        return(
-        filteredPost.map(item => {
-    return (
-        <div>
-            
-            <img height='300px' width='600' src={item.image}/>
-            <br/>
-            {item.user}
-            <br/>
-            {item.date}
-            <br/>
-            {item.body}
+        return (
+            <div className='beach-detail-container'>
 
-        </div>
-    );
-})
-)
+                <div className='beach-detail-image'>
+                    <img src={beach.image_url}/>
+                </div>
+                <div className='beach-detail-information'>
+                    {beach.name}
+                    {beach.city}
+                    {beach.state}
+                    {beach.description}
+                </div>
+                <div className='beach-detail-post-container'>
+                    <Post 
+                    post={post}
+                    match={match}
+                    currentBeach = {currentBeach}
+                    />
+                </div>
+                
+            </div>
+        );
     }
 }
-// }
 
 export default BeachDetails;

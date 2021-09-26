@@ -6,6 +6,7 @@ import BeachDetails from './components/BeachDetails';
 import Landing from './components/Landing';
 import Header from './components/Header';
 import BeachList from './components/BeachList';
+import Footer from './components/Footer';
 
 
 
@@ -34,9 +35,10 @@ function App() {
     
   return (
     <div>
-
+      <div className='app-header-container'>
       <Header />
-      
+      </div>
+      <div className='app-body-container'>
       <Route exact path = '/' 
       component = {Landing}
       />
@@ -58,6 +60,10 @@ function App() {
                 />
               )}
       />
+
+    </div>
+
+      <Footer />
 
     </div>
   );

@@ -1,34 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
+function Post({ post, match, currentBeach }) {
 
-function Post(props) {
-
-
-    const [post, setPost] = useState()
-    const postUrl = 'http://localhost:8000/post/?format=json'
-
-
-
-    useEffect(() => {
-        fetch(postUrl)
-        .then(res => res.json())
-        .then(res => setPost(res))
-        .catch(console.error)
-    },[])
-
-
+    
     if (!post) {
         return null
     } else {
-    return (
-        post.map(posts => {
-            return (
-        <div>
-            <h3>{posts.body}</h3>
-        </div>
-            )
-        })
-    );
+        let filteredPost = post.filter(item => item.beach == currentBeach)
+        return(
+            filteredPost.map(item => {
+                return (
+                    <div className='post-container'>
+                    
+                        <img height='300px' width='600' src={item.image != "" ? item.image : null}/>
+                        <div className='post-information'>
+                            <div className='post-name'>{item.user}</div>
+                            <div className='post-date'>{item.date}</div>
+                            <div className='post-body'>{item.body}</div>
+                        </div>
+                
+                    </div>
+                );
+            })
+        )
     }
 }
 

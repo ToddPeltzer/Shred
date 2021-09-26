@@ -1,1 +1,113 @@
+/* APP */
 
+.app-header-container {
+
+}
+
+.app-body-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+/* HEADER */
+
+.header-container {
+    display: flex;
+    align-items: baseline;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.header-title {
+    margin-right: auto;
+    margin-left: 20px;
+}
+
+.header-beach {
+    margin-right: 20px;
+}
+
+.header-about {
+    margin-right: 20px;
+}
+
+.header-sign {
+    margin-right: 20px;
+}
+
+.header-link {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* BEACH LIST */
+
+
+.beach-list-container {
+    margin: 30px;
+}
+
+.beach-list-image {
+    height: 200px;
+    width: 300px;
+    border-radius: 20px;
+}
+
+.beach-list-name-link {
+    text-decoration: none;
+    color: black;
+}
+
+.beach-list-name {
+    display:flex;
+    justify-content: center;
+    
+}
+
+
+/* FOOTER */
+
+.footer-container {
+    display: flex;
+    align-items: baseline;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.footer-name {
+    margin-right: auto;
+    margin-left: 20px;
+}
+
+.footer-name-link {
+    color: black;
+    text-decoration: none;
+}
+
+.footer-social-image {
+    height: 40px;
+    width: 40px;
+}
+
+.footer-github {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.footer-linkedin {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.footer-social-name-link {
+    text-decoration: none;
+    color: black;
+    margin-left: 5px;
+}
