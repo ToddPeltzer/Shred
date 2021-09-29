@@ -4,11 +4,18 @@ import { Link } from 'react-router-dom';
 function Landing({ beach }) {
 
     
+
+    
     if (!beach) {
         return null
     } else {
+        let sortBeach = beach.sort((a,b)=> {
+            if(a.name < b.name) {return -1}
+            if(a.name > b.name) {return 1}
+            return 0
+        })
         return (
-            beach.map(beaches => {
+            sortBeach.map(beaches => {
                 return (
                     <div className='beach-list-container'>
 

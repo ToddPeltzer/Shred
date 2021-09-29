@@ -17,8 +17,8 @@ function App() {
   const [beach, setBeach] = useState()
   const [post, setPost] = useState()
 
-  const urlBeach = 'http://localhost:8000/beach/?format=json'
-  const urlPost = 'http://localhost:8000/post/?format=json'
+  const urlBeach = 'http://localhost:8000/beach/'
+  const urlPost = 'http://localhost:8000/post/'
 
 
     useEffect(() => {
@@ -32,6 +32,10 @@ function App() {
         setPost(res.data)
       })
     }, [])
+
+
+
+    
     
   return (
     <div>
@@ -50,16 +54,18 @@ function App() {
                 />
               )}
       />
-
-      <Route  exact path = '/beach/:id'
-              render = {(routerProps) => (
-                <BeachDetails 
-                match={routerProps.match}
-                beach = {beach}
-                post = {post}
-                />
-              )}
-      />
+      <div className='app-detail-container'>
+        <Route  exact path = '/beach/:id'
+                render = {(routerProps) => (
+                  <BeachDetails 
+                  match={routerProps.match}
+                  beach = {beach}
+                  post = {post}
+                  setPost={setPost}
+                  />
+                )}
+        />
+      </div>
 
     </div>
 
