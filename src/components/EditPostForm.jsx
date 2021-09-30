@@ -4,7 +4,7 @@ import axios from 'axios';
 import Modal from 'react-modal';
 
 
-function NewPostForm({ setPost, beach, setPostModal, postModal }) {
+function EditPostForm({ id, setPost, beach, setEditModal, editModal }) {
 
 
     const [date, setDate] = useState()
@@ -12,11 +12,13 @@ function NewPostForm({ setPost, beach, setPostModal, postModal }) {
     const [body, setBody] = useState()
     const [image, setImage] = useState()
 
+console.log('ID:', id)
 
     useEffect(() => {setDate('2021-09-28T06:58:00Z')}, [])
 
-    async function newPost() {
-        axios.post('http://localhost:8000/post/', {
+    async function editPost(id) {
+        console.log('URL:', id)
+        axios.put(`http://localhost:8000/post/${id}`, {
             user: user,
             body: body,
             date: date,
@@ -28,11 +30,11 @@ function NewPostForm({ setPost, beach, setPostModal, postModal }) {
                 setPost(res.data)
             })
         })
-        closeModal()
+        closeEditModal()
     }
 
-    function closeModal() {
-        setPostModal(false)
+    function closeEditModal() {
+        setEditModal(false)
     }
 
 
@@ -64,26 +66,26 @@ function NewPostForm({ setPost, beach, setPostModal, postModal }) {
 
     return (
         <div>
-            <Modal style={taskModalStyle} isOpen={postModal} ariaHideApp={false}>
+            <Modal style={taskModalStyle} isOpen={editModal} ariaHideApp={false}>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
                     <Form.Label>Username</Form.Label>
-                    <Form.Control type="user" placeholder="Enter username" onChange={storeUser}/>
+                    <Form.Control type="user"  onChange={storeUser}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGroupFirstName">
                     <Form.Label>Update</Form.Label>
-                    <Form.Control placeholder="Update" onChange={storeBody}/>
+                    <Form.Control  onChange={storeBody}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGroupLastName">
                     <Form.Label>Image</Form.Label>
-                    <Form.Control placeholder="Image URL" onChange={storeImage}/>
+                    <Form.Control  onChange={storeImage}/>
                 </Form.Group>
-                <button onClick={() => newPost()}>CREATE</button>
-                <button onClick={() => closeModal()}>CANCEL</button>
+                <button onClick={() => editPost(id)}>SAVE</button>
+                <button onClick={() => closeEditModal()}>CANCEL</button>
             </Modal>
         </div>
     );
 }
 
-export default NewPostForm;
+export default EditPostForm;

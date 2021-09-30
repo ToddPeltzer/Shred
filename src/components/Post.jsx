@@ -1,30 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import EditPostForm from './EditPostForm';
 
-function Post({ post, currentBeach, setPost }) {
 
-    // const editPost = (e) => {
-    //     e.preventDefault()
-    //     const urlPost = 'http://localhost:8000/post/?format=json'
-    //     const url = window.location.pathname.split('/')
-    //     axios.put(urlPost + url[2])
-    // }
 
-    // function deletePost()  {
-    //         console.log('MADE IT')
-    //         axios.delete('http://localhost:8000/post/5?format=json').then(() => {
-    //             axios.get('http://localhost:8000/post/?format=json')
-    //                 .then(res => setPost(res))
-    //                 console.log('MADE IT HERE')
-    //         })
-    // }
+function Post({ post, currentBeach, setPost, beach, setPostModal }) {
+
+    const [editModal, setEditModal] = useState(false)
+    const [id, setID] = useState()
+
+    
     const deletePost = async (id) => {
-        try {
-            const url = `http://localhost:8000/post/${id}`
-            axios.delete(url)
-        } catch (error){
+        const url = `http://localhost:8000/post/${id}`
+        axios.delete(url)
+        .then((res) => {
+            axios.get('http://localhost:8000/post/').then(res => {
+                setPost(res.data)
+            })
+        })
+    }
 
-        }
+
+    function openEditModal(id) {
+        console.log(id)
+        setEditModal(true)
+        setID(id)
     }
 
     
@@ -38,15 +38,23 @@ function Post({ post, currentBeach, setPost }) {
                 return (
                     <div className='post-container'>
                     
-                        <img height='300px' width='600' src={item.image != "" ? item.image : null}/>
+                        <img height='300px' width='600' src={item.image != "" ? item.image : null} alt=""/>
                         <div className='post-information'>
                             <div className='post-name'>{item.user}</div>
                             <div className='post-date'>{item.date}</div>
                             <div className='post-body'>{item.body}</div>
                         </div>
-                        <button>Edit</button>
+                        <button onClick={() => openEditModal(item.id)}>Edit</button>
                         <button onClick={() => deletePost(item.id)}>Delete</button>
-                
+
+                        <EditPostForm 
+                        setEditModal={setEditModal}
+                        editModal={editModal}
+                        setPost={setPost}
+                        beach={beach}
+                        id={id}
+                        />
+                    
                     </div>
                 );
             })
