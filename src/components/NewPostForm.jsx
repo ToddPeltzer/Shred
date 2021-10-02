@@ -7,24 +7,21 @@ import Modal from 'react-modal';
 function NewPostForm({ setPost, beach, setPostModal, postModal }) {
 
 
-    const [date, setDate] = useState()
     const [user, setUser] = useState()
     const [body, setBody] = useState()
     const [image, setImage] = useState()
 
 
-    useEffect(() => {setDate('2021-09-28T06:58:00Z')}, [])
 
     async function newPost() {
-        axios.post('http://localhost:8000/post/', {
+        axios.post('https://shred-live.herokuapp.com/post/', {
             user: user,
             body: body,
-            date: date,
             image: image,
             beach: beach.id,
         })
         .then((res) => {
-            axios.get('http://localhost:8000/post/').then(res => {
+            axios.get('https://shred-live.herokuapp.com/post/').then(res => {
                 setPost(res.data)
             })
         })

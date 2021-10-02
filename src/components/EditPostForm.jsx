@@ -4,39 +4,55 @@ import axios from 'axios';
 import Modal from 'react-modal';
 
 
-function EditPostForm({ id, setPost, beach, setEditModal, editModal }) {
+function EditPostForm({ id, userPass, bodyPass, imagePass, setPost, beach, setEditModal, editModal }) {
+    
 
+    const [user, setUser] = useState("")
+    const [body, setBody] = useState("")
+    const [image, setImage] = useState("")
 
-    const [date, setDate] = useState()
-    const [user, setUser] = useState()
-    const [body, setBody] = useState()
-    const [image, setImage] = useState()
-
-console.log('ID:', id)
-
-    useEffect(() => {setDate('2021-09-28T06:58:00Z')}, [])
+    // console.log('out id',id)
+    // console.log('out user',user)
+    // console.log('out body',body)
+    // console.log('out image',image)
+    // console.log('out beachid',beach.id)
 
     async function editPost(id) {
-        console.log('URL:', id)
-        axios.put(`http://localhost:8000/post/${id}`, {
+
+        // if (!body) {
+        //     setUser(userPass)
+        // }
+        // if (!body) {
+        //     setUser(bodyPass)
+        // }
+        // if (!image) {
+        //     setUser(imagePass)
+        // }
+        // console.log(id)
+        // console.log(user)
+        // console.log(body)
+        // console.log(image)
+        // console.log(beach.id)
+        // ON CHANGE IS CAUSING NO UPDATE IF ONLY TARGETTING ONE VALUE
+  
+        axios.put(`https://shred-live.herokuapp.com/post/${id}`, {
             user: user,
             body: body,
-            date: date,
             image: image,
             beach: beach.id,
         })
         .then((res) => {
-            axios.get('http://localhost:8000/post/').then(res => {
+            axios.get('https://shred-live.herokuapp.com/post/').then(res => {
                 setPost(res.data)
             })
         })
         closeEditModal()
     }
 
+
     function closeEditModal() {
         setEditModal(false)
     }
-
 
     const storeUser = (e) => {
         setUser(e.target.value)
@@ -69,17 +85,17 @@ console.log('ID:', id)
             <Modal style={taskModalStyle} isOpen={editModal} ariaHideApp={false}>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
                     <Form.Label>Username</Form.Label>
-                    <Form.Control type="user"  onChange={storeUser}/>
+                    <Form.Control type="user" defaultValue={userPass} onChange={storeUser}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGroupFirstName">
                     <Form.Label>Update</Form.Label>
-                    <Form.Control  onChange={storeBody}/>
+                    <Form.Control defaultValue={bodyPass} onChange={storeBody}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGroupLastName">
                     <Form.Label>Image</Form.Label>
-                    <Form.Control  onChange={storeImage}/>
+                    <Form.Control defaultValue={imagePass} onChange={storeImage}/>
                 </Form.Group>
                 <button onClick={() => editPost(id)}>SAVE</button>
                 <button onClick={() => closeEditModal()}>CANCEL</button>

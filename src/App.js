@@ -17,8 +17,8 @@ function App() {
   const [beach, setBeach] = useState()
   const [post, setPost] = useState()
 
-  const urlBeach = 'http://localhost:8000/beach/'
-  const urlPost = 'http://localhost:8000/post/'
+  const urlBeach = 'https://shred-live.herokuapp.com/beach/'
+  const urlPost = 'https://shred-live.herokuapp.com/post/'
 
 
     useEffect(() => {

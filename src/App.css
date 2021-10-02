@@ -77,13 +77,86 @@
 .beach-detail-container {
     display: flex;
     flex-direction: column;
-    align-items: center ;
+    align-items: center;
+}
+
+.beach-detail-image-container {
+    display: flex;
+    justify-content: center;
 }
 
 .beach-detail-image {
-    height: 450px;
-    width: 750px;
+    height: auto;
+    width: 90%;
+    border-radius: 20px;
 }
+
+.beach-detail-information {
+    width: 80%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.beach-detail-name {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.beach-detail-city {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.beach-detail-description {
+    margin-bottom: 10px;
+}
+
+.beach-detail-create-button {
+    margin-bottom: 10px;
+}
+
+
+/* DETAIL POST */
+
+.post-container {
+    display: flex;
+    flex-direction: column;
+    background-color: grey;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    margin-left: 14%;
+    width: 70%;
+    height: auto;
+    padding: 10px;
+}
+
+.post-image {
+    border-radius: 20px;
+    width: 100%;
+    height: auto;
+}
+
+.post-information {
+    margin: 10px 15px 20px 15px;
+}
+
+.post-name {
+    margin-bottom: 10px;
+}
+
+.post-date {
+    margin-bottom: 10px;
+}
+
+.post-body {
+    margin-bottom: 10px;
+}
+
+
+
+
 
 
 /* FOOTER */

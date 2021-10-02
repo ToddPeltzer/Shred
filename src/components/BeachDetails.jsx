@@ -8,7 +8,7 @@ function BeachDetails({ post, match, setPost }) {
 
     const currentBeach = match.params.id
     
-    const urlBeach = `http://localhost:8000/beach/${currentBeach}`
+    const urlBeach = `https://shred-live.herokuapp.com/beach/${currentBeach}`
 
     const [beach, setBeach] = useState()
     const [postModal, setPostModal] = useState(false)
@@ -33,10 +33,10 @@ function BeachDetails({ post, match, setPost }) {
                     <img className='beach-detail-image' src={beach.image_url} alt=""/>
                 </div>
                 <div className='beach-detail-information'>
-                    <div>{beach.name}</div>
-                    <div>{beach.city}, {beach.state}</div>
-                    <div>{beach.description}</div>
-                    <button onClick={openModal}>Create Post</button>
+                    <div className='beach-detail-name'>{beach.name}</div>
+                    <div className='beach-detail-city'>{beach.city}, {beach.state}</div>
+                    <div className='beach-detail-description'>{beach.description}</div>
+                    <button className='beach-detail-create-button' onClick={openModal}>Post Surf Update</button>
                 </div>
 
 
@@ -53,14 +53,14 @@ function BeachDetails({ post, match, setPost }) {
                     />
                 </div>
                 
-                    <div>
-                <NewPostForm 
-                setPost={setPost}
-                beach={beach}
-                setBeach={setBeach}
-                postModal={postModal}
-                setPostModal={setPostModal}
-                />
+                <div>
+                    <NewPostForm 
+                    setPost={setPost}
+                    beach={beach}
+                    setBeach={setBeach}
+                    postModal={postModal}
+                    setPostModal={setPostModal}
+                    />
                 </div>
 
             </div>
