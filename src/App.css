@@ -1,5 +1,51 @@
 /* APP */
 
+
+.landing-image-container {
+    /* max-height: 60px; */
+}
+
+.landing-image {
+    width: 100vw;
+    height: auto;
+    max-height: 35rem;
+  }
+
+.landing-about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightgray;
+    margin-top: -5px;
+}
+
+.landing-about-title {
+       font-size: larger;
+       font-weight: bolder;
+       padding-top: 50px;
+       padding-bottom: 15px;
+       color: darkorange;
+}
+
+.landing-about-subtitle {
+    padding-bottom: 15px;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.landing-about {
+    margin-left: 15%;
+    margin-right: 15%;
+    padding-bottom: 50px;
+    text-align: center;
+    max-width: 40rem;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .app-header-container {
 
 }
@@ -14,13 +60,24 @@
     display: flex;
 }
 
+.app-footer-container {
+    
+}
+
 /* HEADER */
 
 .header-container {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     padding-bottom: 20px;
     padding-top: 20px;
+    margin-bottom: auto;
+}
+
+.header-image {
+    margin-left: 20px;
+    height: 100px;
+    width: 100px;
 }
 
 .header-title {
@@ -28,9 +85,18 @@
     margin-left: 20px;
 }
 
+.header-location-image {
+    height: 40px;
+    width: 25px;
+    margin-right: 10px;
+    margin-top: 5px;
+
+}
+
 .header-beach {
     margin-right: 20px;
 }
+
 
 .header-about {
     margin-right: 20px;
@@ -45,6 +111,10 @@
     color: black;
 }
 
+.header-link:hover {
+    color: darkorange;
+}
+
 
 /* BEACH LIST */
 
@@ -56,7 +126,19 @@
 .beach-list-image {
     height: 200px;
     width: 300px;
+    /* border: 5px solid lightgray; */
     border-radius: 20px;
+    box-shadow: 5px 5px 5px lightgrey;    
+    /* padding: 5px; */
+    /* background-image: linear-gradient(to bottom right, white, white); */
+
+}
+
+.beach-list-image:hover {
+    /* border: 5px solid darkorange; */
+    box-shadow: 5px 5px 5px #03839E;    
+
+    /* background-image: linear-gradient( white, darkorange, white); */
 }
 
 .beach-list-name-link {
@@ -64,10 +146,14 @@
     color: black;
 }
 
+.beach-list-name-link:hover {
+    text-decoration: none;
+    color: darkorange;
+}
+
 .beach-list-name {
     display:flex;
     justify-content: center;
-    
 }
 
 
@@ -87,47 +173,70 @@
 
 .beach-detail-image {
     height: auto;
-    width: 90%;
-    border-radius: 20px;
+    /* width: 90%; */
+    /* border-radius: 20px; */
+    width: 100vw;
+    max-height: 35rem;
 }
 
 .beach-detail-information {
-    width: 80%;
     margin-top: 15px;
     margin-bottom: 15px;
+    width: 80%;
+    max-width: 50rem;
 }
 
 .beach-detail-name {
     display: flex;
     justify-content: center;
     margin-bottom: 5px;
+    font-size: xx-large;
+    font-weight: bolder;
 }
 
 .beach-detail-city {
     display: flex;
     justify-content: center;
     margin-bottom: 5px;
+    font-size: larger;
+    font-weight: bold;
 }
 
 .beach-detail-description {
     margin-bottom: 10px;
+    font-size: large;
 }
 
 .beach-detail-create-button {
     margin-bottom: 10px;
+    background-color: #03839E;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 15px 5px 15px;
+    font-weight: bold;
+    font-size: xx-large;
+    box-shadow: 2px 2px 5px grey;
+    cursor: pointer;
+    /* background-image: linear-gradient(to bottom right, white, #03839E); */
 }
 
+.beach-detail-create-button:hover {
+    background-color: darkorange;
+}
 
 /* DETAIL POST */
 
 .post-container {
     display: flex;
     flex-direction: column;
-    background-color: grey;
+    background-image: linear-gradient(to bottom right, white, lightgray);
     border-radius: 20px;
     margin-bottom: 20px;
-    margin-left: 14%;
-    width: 70%;
+    /* margin-left: 19.7%; */
+    max-width: 60%;
+    /* width: 100vw; */
+    max-width: 40rem;
     height: auto;
     padding: 10px;
 }
@@ -144,18 +253,68 @@
 
 .post-name {
     margin-bottom: 10px;
+    font-size: larger;
+    font-weight: bold;
 }
 
 .post-date {
     margin-bottom: 10px;
+    font-size: large;
+    font-weight: bold;
+    font-style: italic;
 }
 
 .post-body {
     margin-bottom: 10px;
+    font-size: medium;
+}
+
+.post-edit-button {
+    background-color: #03839E;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    font-size: medium;
+    box-shadow: 2px 2px 5px grey;
+    cursor: pointer;
 }
 
 
+.post-delete-button {
+    margin-left: 10px;
+    border: none;
+    background-color: lightcoral;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    font-size: medium;
+    box-shadow: 2px 2px 5px grey;
+    cursor: pointer;
+}
 
+
+/* FORMS */
+
+.username-form {
+    padding: 5px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.body-form {
+    padding: 5px;
+    margin-left: 31px;
+    margin-bottom: 10px;
+}
+
+.image-form {
+    padding: 5px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+}
 
 
 
@@ -163,7 +322,7 @@
 
 .footer-container {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     padding-bottom: 20px;
     padding-top: 20px;
 }
@@ -182,6 +341,7 @@
     height: 40px;
     width: 40px;
 }
+
 
 .footer-github {
     display: flex;

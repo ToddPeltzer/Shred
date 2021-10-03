@@ -36,7 +36,7 @@ function BeachDetails({ post, match, setPost }) {
                     <div className='beach-detail-name'>{beach.name}</div>
                     <div className='beach-detail-city'>{beach.city}, {beach.state}</div>
                     <div className='beach-detail-description'>{beach.description}</div>
-                    <button className='beach-detail-create-button' onClick={openModal}>Post Surf Update</button>
+                    <button className='beach-detail-create-button' onClick={openModal}>+ Update</button>
                 </div>
 
 

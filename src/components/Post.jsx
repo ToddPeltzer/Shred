@@ -49,8 +49,8 @@ function Post({ post, currentBeach, setPost, beach, setPostModal }) {
                             <div className='post-date'>{item.date}</div>
                             <div className='post-body'>{item.body}</div>
                         
-                        <button onClick={() => openEditModal(item.id, item.user, item.body, item.image)}>Edit</button>
-                        <button onClick={() => deletePost(item.id)}>Delete</button>
+                        <button className='post-edit-button' onClick={() => openEditModal(item.id, item.user, item.body, item.image)}>Edit</button>
+                        <button className='post-delete-button' onClick={() => deletePost(item.id)}>Delete</button>
                         </div>
                     </div>
                         <EditPostForm 

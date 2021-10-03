@@ -38,38 +38,40 @@ function App() {
     
     
   return (
-    <div>
+    <div className='app-container'>
+      
+      
       <div className='app-header-container'>
-      <Header />
+        <Header />
       </div>
       <div className='app-body-container'>
-      <Route exact path = '/' 
-      component = {Landing}
-      />
+        <Route exact path = '/' 
+        component = {Landing}
+        />
 
-      <Route  exact path = '/beach'
+        <Route  exact path = '/beach'
               render = {() => (
                 <BeachList
                 beach = {beach}
                 />
               )}
-      />
-      <div className='app-detail-container'>
-        <Route  exact path = '/beach/:id'
-                render = {(routerProps) => (
-                  <BeachDetails 
-                  match={routerProps.match}
-                  beach = {beach}
-                  post = {post}
-                  setPost={setPost}
-                  />
-                )}
         />
+        <div className='app-detail-container'>
+          <Route  exact path = '/beach/:id'
+                  render = {(routerProps) => (
+                    <BeachDetails 
+                    match={routerProps.match}
+                    beach = {beach}
+                    post = {post}
+                    setPost={setPost}
+                    />
+                  )}
+          />
+        </div>
       </div>
-
-    </div>
-
-      <Footer />
+      <div className='app-footer-container'>
+        <Footer />
+      </div>
 
     </div>
   );

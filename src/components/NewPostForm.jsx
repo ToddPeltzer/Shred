@@ -63,21 +63,21 @@ function NewPostForm({ setPost, beach, setPostModal, postModal }) {
         <div>
             <Modal style={taskModalStyle} isOpen={postModal} ariaHideApp={false}>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control type="user" placeholder="Enter username" onChange={storeUser}/>
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control className='username-form' type="user" placeholder="Enter username" onChange={storeUser}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGroupFirstName">
-                    <Form.Label>Update</Form.Label>
-                    <Form.Control placeholder="Update" onChange={storeBody}/>
+                    <Form.Label>Update:</Form.Label>
+                    <Form.Control className='body-form' placeholder="Update" onChange={storeBody}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGroupLastName">
-                    <Form.Label>Image</Form.Label>
-                    <Form.Control placeholder="Image URL" onChange={storeImage}/>
+                    <Form.Label>Image:</Form.Label>
+                    <Form.Control className='image-form' placeholder="Image URL" onChange={storeImage}/>
                 </Form.Group>
-                <button onClick={() => newPost()}>CREATE</button>
-                <button onClick={() => closeModal()}>CANCEL</button>
+                <button className='post-edit-button' onClick={() => newPost()}>CREATE</button>
+                <button className='post-delete-button' onClick={() => closeModal()}>CANCEL</button>
             </Modal>
         </div>
     );
