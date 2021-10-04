@@ -11,14 +11,13 @@ function EditPostForm({ id, userPass, bodyPass, imagePass, setPost, beach, setEd
     const [body, setBody] = useState(bodyPass)
     const [image, setImage] = useState("")
 
-    console.log('out id',id)
-    console.log('out user',user)
-    console.log('out body',body)
-    console.log('out image',image)
-    console.log('out beachid',beach.id)
+    console.log('out user',userPass)
+    console.log('out body',bodyPass)
 
     async function editPost(id) {
 
+        console.log('in user',userPass)
+        console.log('in body',bodyPass)
         // ON CHANGE IS CAUSING NO UPDATE IF ONLY TARGETTING ONE VALUE
   
         axios.put(`https://shred-live.herokuapp.com/post/${id}`, {
@@ -71,20 +70,20 @@ function EditPostForm({ id, userPass, bodyPass, imagePass, setPost, beach, setEd
             <Modal style={taskModalStyle} isOpen={editModal} ariaHideApp={false}>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
                     <Form.Label>Username</Form.Label>
-                    <Form.Control type="user" defaultValue={userPass} onChange={storeUser}/>
+                    <Form.Control className='username-form' type="user" defaultValue={userPass} onChange={storeUser}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGroupFirstName">
                     <Form.Label>Update</Form.Label>
-                    <Form.Control defaultValue={bodyPass} onChange={storeBody}/>
+                    <Form.Control className='body-form' defaultValue={bodyPass} onChange={storeBody}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGroupLastName">
                     <Form.Label>Image</Form.Label>
-                    <Form.Control defaultValue={imagePass} onChange={storeImage}/>
+                    <Form.Control className='image-form' defaultValue={imagePass} onChange={storeImage}/>
                 </Form.Group>
-                <button onClick={() => editPost(id)}>SAVE</button>
-                <button onClick={() => closeEditModal()}>CANCEL</button>
+                <button className='post-edit-button' onClick={() => editPost(id)}>SAVE</button>
+                <button className='post-delete-button' onClick={() => closeEditModal()}>CANCEL</button>
             </Modal>
         </div>
     );
