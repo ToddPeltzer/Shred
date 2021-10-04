@@ -7,32 +7,18 @@ import Modal from 'react-modal';
 function EditPostForm({ id, userPass, bodyPass, imagePass, setPost, beach, setEditModal, editModal }) {
     
 
-    const [user, setUser] = useState("")
-    const [body, setBody] = useState("")
+    const [user, setUser] = useState(userPass)
+    const [body, setBody] = useState(bodyPass)
     const [image, setImage] = useState("")
 
-    // console.log('out id',id)
-    // console.log('out user',user)
-    // console.log('out body',body)
-    // console.log('out image',image)
-    // console.log('out beachid',beach.id)
+    console.log('out id',id)
+    console.log('out user',user)
+    console.log('out body',body)
+    console.log('out image',image)
+    console.log('out beachid',beach.id)
 
     async function editPost(id) {
 
-        // if (!body) {
-        //     setUser(userPass)
-        // }
-        // if (!body) {
-        //     setUser(bodyPass)
-        // }
-        // if (!image) {
-        //     setUser(imagePass)
-        // }
-        // console.log(id)
-        // console.log(user)
-        // console.log(body)
-        // console.log(image)
-        // console.log(beach.id)
         // ON CHANGE IS CAUSING NO UPDATE IF ONLY TARGETTING ONE VALUE
   
         axios.put(`https://shred-live.herokuapp.com/post/${id}`, {
