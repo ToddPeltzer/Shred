@@ -233,9 +233,7 @@
     background-image: linear-gradient(to bottom right, white, lightgray);
     border-radius: 20px;
     margin-bottom: 20px;
-    /* margin-left: 19.7%; */
-    max-width: 60%;
-    /* width: 100vw; */
+    width: 70vw;
     max-width: 40rem;
     height: auto;
     padding: 10px;
