@@ -11,13 +11,8 @@ function EditPostForm({ id, userPass, bodyPass, imagePass, setPost, beach, setEd
     const [body, setBody] = useState(bodyPass)
     const [image, setImage] = useState("")
 
-    console.log('out user',userPass)
-    console.log('out body',bodyPass)
-
     async function editPost(id) {
 
-        console.log('in user',userPass)
-        console.log('in body',bodyPass)
         // ON CHANGE IS CAUSING NO UPDATE IF ONLY TARGETTING ONE VALUE
   
         axios.put(`https://shred-live.herokuapp.com/post/${id}`, {
@@ -68,6 +63,7 @@ function EditPostForm({ id, userPass, bodyPass, imagePass, setPost, beach, setEd
     return (
         <div>
             <Modal style={taskModalStyle} isOpen={editModal} ariaHideApp={false}>
+                <h3 className='modal-title'>Edit Update</h3>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
                     <Form.Label>Username</Form.Label>
                     <Form.Control className='username-form' type="user" defaultValue={userPass} onChange={storeUser}/>

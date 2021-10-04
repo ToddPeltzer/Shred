@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import EditPostForm from './EditPostForm';
+import DeleteWarning from './DeleteWarning';
 
 
 
 function Post({ post, currentBeach, setPost, beach, setPostModal }) {
 
     const [editModal, setEditModal] = useState(false)
+    const [warningModal, setWarningModal] = useState(false)
     const [id, setID] = useState()
     const [user, setUser] = useState()
     const [body, setBody] = useState()
     const [image, setImage] = useState()
+    const [deleteSpecificPost, setDeleteSpecificPost] = useState()
 
 
-    const deletePost = async (id) => {
-        const url = `https://shred-live.herokuapp.com/post/${id}`
-        axios.delete(url)
-        .then((res) => {
-            axios.get('https://shred-live.herokuapp.com/post/').then(res => {
-                setPost(res.data)
-            })
-        })
-    }
+
+    // const deletePost = async (id) => {
+    //     const url = `https://shred-live.herokuapp.com/post/${id}`
+    //     axios.delete(url)
+    //     .then((res) => {
+    //         axios.get('https://shred-live.herokuapp.com/post/').then(res => {
+    //             setPost(res.data)
+    //         })
+    //     })
+    // }
 
 
     function openEditModal(id, user, body, image) {
@@ -30,6 +34,11 @@ function Post({ post, currentBeach, setPost, beach, setPostModal }) {
         setUser(user)
         setBody(body)
         setImage(image)
+    }
+
+    function openWarningModal(id) {
+        setWarningModal(true)
+        setDeleteSpecificPost(id)
     }
 
     
@@ -50,7 +59,7 @@ function Post({ post, currentBeach, setPost, beach, setPostModal }) {
                             <div className='post-body'>{item.body}</div>
                         
                         <button className='post-edit-button' onClick={() => openEditModal(item.id, item.user, item.body, item.image)}>Edit</button>
-                        <button className='post-delete-button' onClick={() => deletePost(item.id)}>Delete</button>
+                        <button className='post-delete-button' onClick={() => openWarningModal(item.id)}>Delete</button>
                         </div>
                     </div>
                         <EditPostForm 
@@ -62,6 +71,13 @@ function Post({ post, currentBeach, setPost, beach, setPostModal }) {
                         userPass={user}
                         bodyPass={body}
                         imagePass={image}
+                        />
+
+                        <DeleteWarning
+                        setWarningModal={setWarningModal}
+                        warningModal={warningModal}
+                        setPost={setPost}
+                        deleteSpecificPost={deleteSpecificPost}
                         />
                     
                     </div>

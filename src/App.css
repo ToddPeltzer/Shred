@@ -8,7 +8,8 @@
 .landing-image {
     width: 100vw;
     height: auto;
-    max-height: 35rem;
+    /* max-height: 35rem; */
+    max-height: 50rem;
   }
 
 .landing-about-container {
@@ -167,7 +168,7 @@
 .beach-detail-image {
     height: auto;
     width: 100vw;
-    max-height: 35rem;
+    max-height: 50rem;
 }
 
 .beach-detail-information {

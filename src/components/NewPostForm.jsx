@@ -62,6 +62,7 @@ function NewPostForm({ setPost, beach, setPostModal, postModal }) {
     return (
         <div>
             <Modal style={taskModalStyle} isOpen={postModal} ariaHideApp={false}>
+                <h3 className='modal-title'>Create Update</h3>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
                     <Form.Label>Username:</Form.Label>
                     <Form.Control className='username-form' type="user" placeholder="Enter username" onChange={storeUser}/>
